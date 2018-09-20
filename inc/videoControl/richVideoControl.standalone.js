@@ -184,7 +184,8 @@ function richVideoControl$applyControl(t) {
     function second2TimeCode(sec) {
         var ms = parseInt(((sec % 1) * 100).toString()) || 0;
         var s = Math.round(parseInt(sec.toString()) % 60) || 0;
-        var m = Math.round((parseInt(sec.toString()) / 60).toString()) || 0;
+//        var m = Math.round((parseInt(sec.toString()) / 60).toString()) || 0; // do not correctly round 30 seconds to 1 minute !!!
+        var m = div(parseInt(sec.toString()),60) || 0;
         var h = div(parseInt(sec.toString()), 3600) || 0;
         return _zeroPad(h, 2) + ":" + _zeroPad(m, 2) + ":" + _zeroPad(s, 2) + "." + _zeroPad(ms, 2);
     }
